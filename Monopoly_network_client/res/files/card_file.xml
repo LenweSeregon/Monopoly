@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+
+<allcards>
+  <!-- Chance card -->
+
+  <!-- GO JAIL -->
+  <card type="chance">
+    <action> go_to </action>
+    <description> Allez en prison. Ne franchissze pas la case Départ </description>
+    <value> Jail </value>
+  </card>
+
+  <!-- DRUNKENESS FINE -->
+  <card type="chance">
+    <action> earn_money </action>
+    <description> Amende pour ivresse. Payez 2.000 </description>
+    <value> 2000 </value>
+  </card>
+
+  <!-- CROSSWORD WIN -->
+  <card type="chance">
+    <action> earn_money </action>
+    <description> Vous avez gagné le prix de mots croisés. Recevez 10.000 </description>
+    <value> 10000 </value>
+  </card>
+
+  <!-- REPAIR -->
+  <card type="chance">
+    <action> lose_money </action>
+    <description> Faites des réparations. 2.500 par maison, 10.000 par hôtel. </description>
+    <value> 2500 </value>
+  </card>
+
+  <!-- INVESTISMENT WIN -->
+  <card type="chance">
+    <action> earn_money </action>
+    <description> Votre immeuble et votre prêt vous rapportent. Vous devez toucher 15.000. </description>
+    <value> 2500 </value>
+  </card>
+
+  <!-- FREE JAIL -->
+  <card type="chance">
+    <action> free_jail </action>
+    <description> Vous êtes libérés de prison </description>
+    <value> None </value>
+  </card>
+
+  <!-- GOTO HENRI-MARTIN -->
+  <card type="chance">
+    <action> go_to </action>
+    <description> Rendez vous à l'Avenue Henri-Martin. </description>
+    <value> Avenue Henri-Martin </value>
+  </card>
+
+  <!-- GOTO START -->
+  <card type="chance">
+    <action> go_to </action>
+    <description> Avancez jusqu'à la case Départ </description>
+    <value> Start </value>
+  </card>
+
+  <!-- GOTO BOULEVARD DE LA VILETTE -->
+  <card type="chance">
+    <action> go_to </action>
+    <description> Avancez au Boulevard de la Villette. </description>
+    <value> Boulevard de la Vilette </value>
+  </card>
+
+  <!-- GOTO GARE DE LYON -->
+  <card type="chance">
+    <action> go_to </action>
+    <description> Allez à la gare de Lyon </description>
+    <value> Gare de Lyon </value>
+  </card>
+
+  <!-- GOTO -3 cell -->
+  <card type="chance">
+    <action> go_to </action>
+    <description> Reculez de trois cases. </description>
+    <value> -3 </value>
+  </card>
+
+  <!-- DRIVING SPEED EXCESS -->
+  <card type="chance">
+    <action> lose_money </action>
+    <description> Amende pour excès de vitesse, 1500. </description>
+    <value> 1.500 </value>
+  </card>
+
+  <!-- TAXATION -->
+  <card type="chance">
+    <action> lose_money </action>
+    <description> Vous êtes imposés pour des réparations. 4.000 par maison. 11.500 par hôtel.</description>
+    <value> 4000 </value>
+  </card>
+
+  <!-- GOTO RUE DE LA PAIX -->
+  <card type="chance">
+    <action> go_to </action>
+    <description> Rendez-vous rue de la Paix.</description>
+    <value> Rue de la Paix </value>
+  </card>
+
+  <!-- Tuition -->
+  <card type="chance">
+    <action> lose_money </action>
+    <description> Payez pour frais de scolarité, 15.000.</description>
+    <value> 15000 </value>
+  </card>
+
+  <!-- BANK PAYMENT -->
+  <card type="chance">
+    <action> earn_money </action>
+    <description> La banque vous verse 5.000.</description>
+    <value> 5.000 </value>
+  </card>
+
+  
+
+
+  
+  <!-- Community card -->
+
+  <!-- GOTO START -->
+  <card type="community">
+    <action> go_to </action>
+    <description> Placez-vous sur la case Départ </description>
+    <value> Start </value>
+  </card>
+
+  <!-- STOCK SELLING -->
+  <card type="community">
+    <action> lose_money </action>
+    <description> La vente devotre stock vous rapporte 5.000. </description>
+    <value> 5000 </value>
+  </card>
+
+  <!-- PAY HOSPITAL -->
+  <card type="community">
+    <action> lose_money </action>
+    <description> Payez à l'Hôpital, 10.000. </description>
+    <value> 10000 </value>
+  </card>
+
+  <!-- ANNIVERSARY -->
+  <card type="community">
+    <action> earn_money </action>
+    <description> C'est votre anniversaire, chaque joeur doit vous donner 1.000. </description>
+    <value> 1000 </value>
+  </card>
+
+  <!-- INSURANCE POLICY -->
+  <card type="community">
+    <action> lose_money </action>
+    <description> Payez votre police d'Assurance s'élevant à 5.000. </description>
+    <value> 5000 </value>
+  </card>
+
+  <!-- ANNUAL RENT -->
+  <card type="community">
+    <action> earn_money </action>
+    <description> Recevez votre revenu annuel, 10.000. </description>
+    <value> 10000 </value>
+  </card>
+
+  <!-- PAY OR RETRY -->
+  <card type="community">
+    <action> lose_money </action>
+    <description> Payez une amende de 1.000 ou tirez une carte chance. </description>
+    <value> 1000 </value>
+  </card>
+
+  <!-- LOAN INTEREST -->
+  <card type="community">
+    <action> earn_money </action>
+    <description> Recevez votre intérêt sur l'emprunt, 2500. </description>
+    <value> 2500 </value>
+  </card>
+
+  <!-- GO JAIL -->
+  <card type="community">
+    <action> go_to </action>
+    <description> Allez en prison. Ne franchissez pas la case Départ. </description>
+    <value> Jail </value>
+  </card>
+
+  <!-- LEGACY -->
+  <card type="community">
+    <action> earn_money </action>
+    <description> Vous héritez de 10.000. </description>
+    <value> 10000 </value>
+  </card>
+    
+  <!-- FREE JAIL -->
+  <card type="community">
+    <action> free_jail </action>
+    <description> Vous êtes libérés de prison </description>
+    <value> None </value>
+  </card>
+
+  <!-- CONTRIBUTION -->
+  <card type="community">
+    <action> earn_money </action>
+    <description> Les contributions vous rapportent 2.000. </description>
+    <value> 2000 </value>
+  </card>
+
+  <!-- WIN BEAUTY PRICE -->
+  <card type="community">
+    <action> earn_money </action>
+    <description> Les contributions vous rapportent 1.000. </description>
+    <value> 1000 </value>
+  </card>
+
+  <!-- GOTO BELLEVILLE -->
+  <card type="community">
+    <action> go_to </action>
+    <description> Retournez à Belleville. </description>
+    <value> Belleville </value>
+  </card>
+
+  <!-- DOCTOR FEE -->
+  <card type="community">
+    <action> lose_money </action>
+    <description> Payez la note du médecin, 5.000 </description>
+    <value> 5000 </value>
+  </card>
+
+  <!-- BANK ERROR -->
+  <card type="community">
+    <action> earn_money </action>
+    <description> Erreur de la banque, recevez 20.000. </description>
+    <value> 20000 </value>
+  </card>
+  
+
+</allcards>

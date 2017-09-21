@@ -1,0 +1,334 @@
+@startuml
+
+
+
+namespace mvc_model #DDDDDD {
+
+interface Observable {
+
+}
+
+abstract class Abstract_terrain {
+    #name
+    #number
+    #type
+}
+
+abstract class Buyable_terrain {
+    #buy_price
+    #owner
+    #mortgage_mod
+    ==
+    {abstract} int get_rent()
+}
+
+class Card_terrain {
+
+}
+
+class Company_terrain {
+    int get_rent()
+}
+
+class Go_jail_terrain {
+
+}
+
+class Go_terrain {
+
+}
+
+class Jail_terrain {
+
+}
+
+class Parking_terrain {
+
+}
+
+class Property_terrain {
+    int get_rent()
+}
+
+class Public_terrain {
+    - cost
+    ==
+    int get_cost()
+}
+
+class Station_terrain {
+    int get_rent()
+}
+
+Abstract_terrain <|-- Buyable_terrain
+Buyable_terrain <|-- Station_terrain
+Buyable_terrain <|-- Company_terrain
+Buyable_terrain <|-- Property_terrain
+Abstract_terrain <|-- Go_jail_terrain
+Abstract_terrain <|-- Go_terrain
+Abstract_terrain <|-- Jail_terrain
+Abstract_terrain <|-- Parking_terrain
+Abstract_terrain <|-- Public_terrain
+Abstract_terrain <|-- Card_terrain
+
+
+abstract class Abstract_card {
+    #description
+    #type
+}
+
+class Earn_money_card {
+    -sum_earn
+    -type_earn
+}
+
+class Get_out_jail_card {
+
+}
+
+class Go_jail_card {
+
+}
+
+class Lose_money_card {
+    -sum_lose
+    -sum_lose_house
+    -sum_lose_hotel
+    -type_lose
+}
+
+class Move_card {
+    -position
+}
+
+class Steal_card {
+
+}
+
+Abstract_card <|-- Earn_money_card
+Abstract_card <|-- Get_out_jail_card
+Abstract_card <|-- Go_jail_card
+Abstract_card <|-- Lose_money_card
+Abstract_card <|-- Move_card
+Abstract_card <|-- Steal_card
+
+class Card_container {
+
+}
+
+Card_container *-- "32" Abstract_card
+
+class Player {
+    -in_jail
+    -is_surrend
+    -is_playing
+    -money
+    -name
+    -position
+    -turn_in_jail
+    -nb_card_out_jail
+}
+
+Player o-- "*" Abstract_terrain
+
+class Auction {
+    void set_auction(pseudo,money)
+    int get_max_auction()
+    String get_max_auction_pseudo()
+    Player get_max_auction_player()
+}
+
+class Dice {
+    -value
+    ==
+    void roll_dice()
+}
+
+class Game_model {
+
+}
+
+class Trade {
+    -first
+    -second
+    ==
+    boolean can_stop_trade()
+    void set_property(pseudo, nb_prop)
+    void set_money(pseudo,money)
+}
+
+Game_model *-- "1..4" Player
+Game_model *-- "40" Abstract_terrain
+Game_model *-- "2,3" Dice
+Game_model *-- "0,1" Auction
+Game_model *-- "0,1" Trade
+Game_model *-- "1" Card_container
+Observable <|.. Game_model
+
+}
+
+
+namespace mvc_view #DDDDDD {
+interface Observer {
+
+}
+
+abstract class Abstract_board_terrain_view {
+    #orientation
+    #width
+    #height
+    #pos_x
+    #pos_y
+    #nb_piece_in
+    #number
+    #name
+    #allow_show_informations
+    #fog_of_war
+}
+
+class Board_terrain_image_view {
+    -image
+    -title
+    -description
+}
+
+class Board_terrain_property_view {
+    -color
+    -price
+    -house_price
+    -rents
+    -nb_house
+}
+
+Abstract_board_terrain_view <|-- Board_terrain_image_view
+Abstract_board_terrain_view <|-- Board_terrain_property_view
+
+
+class Middle_board {
+
+}
+
+class Piece_view {
+
+}
+
+class Board_view {
+
+}
+
+Board_view *-- "1" Middle_board
+Board_view *-- "1..4" Piece_view
+Board_view *-- "40" Abstract_board_terrain_view
+
+
+class Dice_view {
+
+}
+
+class Miniature_terrain {
+
+}
+
+Miniature_terrain o-- "*" Abstract_board_terrain_view
+
+class Card_shower {
+
+}
+
+Card_shower *-- "*" Miniature_terrain
+
+class Player_view {
+
+}
+
+Player_view *-- "1" Card_shower
+
+
+class UI_view {
+
+}
+
+UI_view *-- "2,3" Dice_view
+UI_view *-- "1..4" Player_view
+
+class Game_view {
+
+}
+
+Game_view *-- "1" Board_view
+Game_view *-- "1" UI_view
+Observer <|.. Game_view
+
+}
+
+namespace mvc_controler #DDDDDD {
+
+class Game_controler {
+
+}
+}
+
+namespace network #DDDDDD {
+
+class Network_controler {
+
+}
+
+abstract class Parser_message {
+    {abstract} boolean analyse_message()
+}
+
+class Parser_game {
+    boolean analyse_message()
+}
+
+class Parser_general {
+    boolean analyse_message()
+}
+
+class Client_listener {
+
+}
+
+class Client_speaker {
+
+}
+
+class Client {
+    - socket
+    - in
+    - out
+}
+
+class Client_network_manager {
+
+}
+
+
+network.Network_controler -- mvc_controler.Game_controler
+Network_controler o-- "*" Parser_message
+Network_controler o-- "1" Client_network_manager
+
+Client_network_manager *-- "1" Client_listener
+Client_network_manager *-- "1" Client_speaker
+Client_network_manager *-- "1" Client
+
+Client_listener -- Network_controler
+
+Parser_message <|-- Parser_game
+Parser_message <|-- Parser_general
+
+}
+
+mvc_controler.Game_controler -- mvc_model.Game_model
+mvc_controler.Game_controler -- mvc_view.Game_view
+mvc_model.Game_model -- mvc_view.Game_view
+
+
+
+
+
+
+
+
+@enduml

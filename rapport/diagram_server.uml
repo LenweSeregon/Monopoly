@@ -1,0 +1,105 @@
+@startuml
+
+interface Observer {
+
+}
+
+interface Observable {
+
+}
+
+class Client_entity {
+
+}
+
+class Client_listener {
+
+}
+
+class Client_speaker {
+
+}
+
+class Client_network_manager {
+
+}
+
+class Game_entity {
+
+}
+
+class Server_client_manager {
+
+}
+
+class Server_game_manager {
+
+}
+
+class Server {
+
+}
+
+Observable <|.. Server
+Server *-- "1" Server_game_manager
+Server *-- "1" Server_client_manager
+
+Server_game_manager *-- "*" Game_entity
+Server_client_manager *-- "*" Client_network_manager
+
+Client_network_manager *-- "1" Client_listener
+Client_network_manager *-- "1" Client_speaker
+Client_network_manager *-- "1" Client_entity
+
+class Server_controler {
+
+}
+
+abstract class Parser_client_message {
+
+}
+
+class Parser_game {
+
+}
+
+class Parser_account {
+
+}
+
+class Connection_accepter {
+
+}
+
+Parser_client_message <|-- Parser_game
+Parser_client_message <|-- Parser_account
+
+Server_controler *-- "1" Connection_accepter
+Server_controler *-- "*" Parser_client_message
+
+class Server_view {
+
+}
+
+class Server_properties_view {
+
+}
+
+class Server_communication_view {
+
+}
+
+class Client_connected_view {
+
+}
+
+Observer <|.. Server_view
+Server_view *-- "1" Server_properties_view
+Server_view *-- "1" Server_communication_view
+Server_view *-- "1" Client_connected_view
+
+Server -- Server_controler
+Server_controler -- Server_view
+Server_view -- Server
+
+@enduml

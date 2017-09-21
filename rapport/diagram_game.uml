@@ -1,0 +1,257 @@
+@startuml
+
+interface Observer {
+
+}
+
+interface Observable {
+
+}
+
+abstract class Abstract_terrain {
+
+}
+
+abstract class Buyable_terrain {
+
+}
+
+class Card_terrain {
+
+}
+
+class Company_terrain {
+
+}
+
+class Go_jail_terrain {
+
+}
+
+class Go_terrain {
+
+}
+
+class Jail_terrain {
+
+}
+
+class Parking_terrain {
+
+}
+
+class Property_terrain {
+
+}
+
+class Public_terrain {
+
+}
+
+class Station_terrain {
+
+}
+
+Abstract_terrain <|-- Buyable_terrain
+Buyable_terrain <|-- Station_terrain
+Buyable_terrain <|-- Company_terrain
+Buyable_terrain <|-- Property_terrain
+Abstract_terrain <|-- Go_jail_terrain
+Abstract_terrain <|-- Go_terrain
+Abstract_terrain <|-- Jail_terrain
+Abstract_terrain <|-- Parking_terrain
+Abstract_terrain <|-- Public_terrain
+Abstract_terrain <|-- Card_terrain
+
+
+abstract class Abstract_card {
+
+}
+
+class Earn_money_card {
+
+}
+
+class Get_out_jail_card {
+
+}
+
+class Go_jail_card {
+
+}
+
+class Lose_money_card {
+
+}
+
+class Move_card {
+
+}
+
+Abstract_card <|-- Earn_money_card
+Abstract_card <|-- Get_out_jail_card
+Abstract_card <|-- Go_jail_card
+Abstract_card <|-- Lose_money_card
+Abstract_card <|-- Move_card
+
+class Card_container {
+
+}
+
+Card_container *-- "32" Abstract_card
+
+class Player {
+
+}
+
+Player o-- "*" Abstract_terrain
+
+class Auction {
+
+}
+
+class Dice {
+
+}
+
+class Game_model {
+
+}
+
+Game_model *-- "1..4" Player
+Game_model *-- "40" Abstract_terrain
+Game_model *-- "2,3" Dice
+Game_model *-- "0,1" Auction
+Game_model *-- "1" Card_container
+Observable <|.. Game_model
+
+abstract class Abstract_board_terrain_view {
+
+}
+
+class Board_terrain_image_view {
+
+}
+
+class Board_terrain_property_view {
+
+}
+
+Abstract_board_terrain_view <|-- Board_terrain_image_view
+Abstract_board_terrain_view <|-- Board_terrain_property_view
+
+
+class Middle_board {
+
+}
+
+class Piece_view {
+
+}
+
+class Board_view {
+
+}
+
+Board_view *-- "1" Middle_board
+Board_view *-- "1..4" Piece_view
+Board_view *-- "40" Abstract_board_terrain_view
+
+
+class Dice_view {
+
+}
+
+class Miniature_terrain {
+
+}
+
+Miniature_terrain o-- "*" Abstract_board_terrain_view
+
+class Card_shower {
+
+}
+
+Card_shower *-- "*" Miniature_terrain
+
+class Player_view {
+
+}
+
+Player_view *-- "1" Card_shower
+
+
+class UI_view {
+
+}
+
+UI_view *-- "2,3" Dice_view
+UI_view *-- "1..4" Player_view
+
+class Game_view {
+
+}
+
+Game_view *-- "1" Board_view
+Game_view *-- "1" UI_view
+Observer <|.. Game_view
+
+class Game_controler {
+
+}
+
+class Network_controler {
+
+}
+
+abstract class Parser_message {
+
+}
+
+class Parser_game {
+
+}
+
+class Parser_general {
+
+}
+
+class Client_listener {
+
+}
+
+class Client_speaker {
+
+}
+
+class Client {
+
+}
+
+class Client_network_manager {
+
+}
+
+Client_network_manager *-- "1" Client_listener
+Client_network_manager *-- "1" Client_speaker
+Client_network_manager *-- "1" Client
+
+Parser_message <|-- Parser_game
+Parser_message <|-- Parser_general
+
+Network_controler -- Game_controler
+Network_controler o-- "*" Parser_message
+Network_controler o-- "1" Client_network_manager
+
+Game_controler -- Game_model
+Game_controler -- Game_view
+Game_model -- Game_view
+
+
+
+
+
+
+
+
+@enduml
